@@ -93,7 +93,8 @@
     function onMessageArrived(message) {
     console.log("onMessageArrived:"+message.payloadString);
     document.getElementById('MessageAdmin').innerText = message.payloadString 
-    document.getElementById('pedatt').innerText = message.payloadString === 'pedatt' ? 'Pedido realizado' : '';
+    console.log("on2MessageArrived:"+message2.payloadString);
+    document.getElementById('pedatt').innerText = message2.payloadString === 'pedatt' ? 'Pedido realizado' : '';
     }
   </script>
     
