@@ -17,14 +17,14 @@
   <h1>Sistema Inteligente de Maquina de Vendas</h1>
     
         
-  <button id='on'>TESTE 00</button>
-  <button id='off'>TESTE 01</button>
+  <button id='btn_01'>Pedido de atualização</button>
   </font> 
+        <h1 id-ped_att></h1>
         
-            <font size="2" face="verdana" color="red">    
+            <font size="1" face="verdana" color="red">    
       <h1>Mensagem do administrador</h1>
     </font>
-        <font size="1" face="verdana" color="black">
+        <font size="0.5" face="verdana" color="black">
   <h1 id='MessageAdmin' class="text-center"></h1>
         </font>
         
@@ -59,6 +59,14 @@
     var client = new Paho.Client(wsbroker, wsport, "myclientid_" + randomId);
     </script>
     
+         <script>
+    client.connect({onSuccess:onConnect , useSSL: true});
+    function onConnect() {
+      client.subscribe("SENAISPTCC/40/SIMV/PedAtt");
+      console.log("Conectado");
+    }
+  </script>
+       
   <script>
     client.connect({onSuccess:onConnect , useSSL: true});
     function onConnect() {
@@ -80,12 +88,11 @@
     function sendMessage(message) {
       return function() {
         mqtt_message = new Paho.Message(message);
-        mqtt_message.destinationName = "SENAISPTCC/40/SIMV/MessageAdmin";
+        mqtt_message.destinationName = "SENAISPTCC/40/SIMV/Ped_Att";
         client.send(mqtt_message);
       }
     }
-    document.getElementById('on').addEventListener('click', sendMessage('Teste 00'));
-    document.getElementById('off').addEventListener('click', sendMessage('Teste 01'));
+    document.getElementById('btn_01').addEventListener('click', sendMessage('ped_att'));
   </script>
     
   <script>
@@ -94,6 +101,11 @@
     console.log("onMessageArrived:"+message.payloadString);
     document.getElementById('MessageAdmin').innerText = message.payloadString 
     }
+      
+client.ped_attMessageArrived = att_respMessageArrived;
+    function onMessageArrived(message) {
+      console.log("att_respMessageArrived:"+message.payloadString);
+      document.getElementById('ped_att').innerText = message.payloadString === 'ped_att' ? 'Pedido realizado' : '';
   </script>
     
 </body>
