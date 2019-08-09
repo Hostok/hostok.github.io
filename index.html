@@ -15,8 +15,8 @@
   <h1>Sistema Inteligente de Maquina de Vendas</h1>
     
         
-  <button id='on'>TESTE 00</button>
-  <button id='off'>TESTE 01</button>
+  <button id='on'>TESTE B00</button>
+  <button id='off'>TESTE B01</button>
   
   <h1>Console</h1>
         
@@ -65,7 +65,8 @@
   <script>
     client.onMessageArrived = onMessageArrived;
     function onMessageArrived(message) {
-    console.log("onMessageArrived:"+message.payloadString); 
+    console.log("onMessageArrived:"+message.payloadString);
+    document.getElementById('message').innerText = message.payloadString 
     }
   </script>
     
