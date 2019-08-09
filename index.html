@@ -1,13 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
     <title>SIMV</title>
+    
   <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/paho-mqtt.min.js">
   </script>
+    
+  <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+  </style>
 </head>
+    
 <body>
     <center>
     <font face="verdana" color="green">
@@ -23,6 +45,28 @@
     </font>   
         
   <h1 id='message' class="text-center"></h1>
+        
+    <font face="verdana" color="blue">    
+        <h2>Relatório</h2>
+    </font>
+        
+<table>
+  <tr>
+    <th>Telemetria</th>
+    <th>Valores</th>
+  </tr>
+  <tr>
+    <td>Total de vendas</td>
+    <td id=vendas></td>
+  </tr>
+  <tr>
+    <td>Pedidos - Opção 01</td>
+    <td id=pedidos01></td>
+  </tr>
+  <tr>
+    <td>Temperatura interna</td>
+    <td id=temperatura></td>
+  </tr>
         
     </center>
     
