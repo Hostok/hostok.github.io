@@ -65,9 +65,6 @@
       client.subscribe("SENAISPTCC/40/SIMV/PedAtt");
       console.log("Conectado");
     }
-  </script>
-       
-  <script>
     client.connect({onSuccess:onConnect , useSSL: true});
     function onConnect() {
       client.subscribe("SENAISPTCC/40/SIMV/MessageAdmin");
@@ -102,10 +99,10 @@
     document.getElementById('MessageAdmin').innerText = message.payloadString 
     }
       
-client.onMessageArrived = onMessageArrived;
+    client.onMessageArrived = onMessageArrived;
     function onMessageArrived(message) {
-      console.log("onMessageArrived:"+messageatt.payloadString);
-      document.getElementById('pedatt').innerText = messageatt.payloadString === 'pedatt' ? 'Pedido realizado' : '';
+      console.log("onMessageArrived:"+message.payloadString);
+      document.getElementById('pedatt').innerText = message.payloadString === 'pedatt' ? 'Pedido realizado' : '';
   </script>
     
 </body>
