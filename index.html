@@ -61,6 +61,7 @@
     client.onMessageArrived = onMessageArrived;
     function onMessageArrived(message) {
       console.log("onMessageArrived:"+message.payloadString);
+      document.getElementById('message').innerText = message.payloadString === 'on' ? 'Lamp On' : 'Lamp Off';
     }
   </script>
     
