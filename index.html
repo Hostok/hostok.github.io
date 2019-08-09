@@ -62,7 +62,7 @@
   <script>
     client.connect({onSuccess:onConnect , useSSL: true});
     function onConnect() {
-      client.subscribe("SENAISPTCC/40/SIMV/SENSORTESTE");
+      client.subscribe("SENAISPTCC/40/SIMV/MessageAdmin");
       console.log("Conectado");
     }
   </script>
@@ -80,7 +80,7 @@
     function sendMessage(message) {
       return function() {
         mqtt_message = new Paho.Message(message);
-        mqtt_message.destinationName = "SENAISPTCC/40/SIMV/SENSORTESTE";
+        mqtt_message.destinationName = "SENAISPTCC/40/SIMV/MessageAdmin";
         client.send(mqtt_message);
       }
     }
@@ -90,9 +90,9 @@
     
   <script>
     client.onMessageArrived = onMessageArrived;
-    function onMessageArrived(message) {
+    function onMessageArrived(MessageAdmin) {
     console.log("onMessageArrived:"+message.payloadString);
-    document.getElementById('message').innerText = message.payloadString 
+    document.getElementById('MessageAdmin').innerText = message.payloadString 
     }
   </script>
     
