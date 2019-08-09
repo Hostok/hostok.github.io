@@ -59,10 +59,6 @@
       client.subscribe("SENAISPTCC/40/SIMV/MessageAdmin");  
       console.log("Connected!");
     }
-
-  </script>
-
-  <script>
       
     client.onMessageArrived = onMessageArrived;
       
@@ -70,16 +66,12 @@
     console.log("onMessageArrived:"+MessageAdmin.payloadString);
     document.getElementById('MessageAdmin').innerText = MessageAdmin.payloadString 
     }
-    </script>
       
-    <script>
     function onConnect() { 
     client.subscribe("SENAISPTCC/40/SIMV/Vendas");
     console.log("Connected!"); 
     client.onMessageArrived = onMessageArrived;   
-    </script>
-        
-    <script>  
+         
     function onMessageArrived(Vendas) {
     console.log("onMessageArrived:"+Vendas.payloadString);
     document.getElementById('Vendas').innerText = Vendas.payloadString 
