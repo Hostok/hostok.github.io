@@ -14,8 +14,8 @@
     <h1>Sistema Inteligente de Maquina de Vendas</h1>
     </font>
         
-  <button id='on'>TESTE 01</button>
-  <button id='off'>TESTE 02</button>
+  <button id='on'>TESTE 00</button>
+  <button id='off'>TESTE 01</button>
         
   <h1 id='message' class="text-center">Console</h1>
         
@@ -61,7 +61,7 @@
     client.onMessageArrived = onMessageArrived;
     function onMessageArrived(message) {
       console.log("onMessageArrived:"+message.payloadString);
-      document.getElementById('message').innerText = message.payloadString === 'on' ? 'Lamp On' : 'Lamp Off';
+      document.getElementById('message').innerText = message.payloadString === 'Teste 00' ? 'Teste 00' : 'Teste 01';
     }
   </script>
     
