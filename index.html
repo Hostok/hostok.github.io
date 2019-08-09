@@ -15,16 +15,11 @@
     <font face="verdana" color="green">
         
   <h1>Sistema Inteligente de Maquina de Vendas</h1>
-    
-        
-  <button id='btn_01'>Pedido de atualização</button>
-  </font> 
-        <h1 id=pedatt></h1>
-        
-            <font size="1" face="verdana" color="red">    
+   
+            <font size="0.5" face="verdana" color="red">    
       <h1>Mensagem do administrador</h1>
     </font>
-        <font size="0.5" face="verdana" color="black">
+        <font size="0.25" face="verdana" color="black">
   <h1 id='MessageAdmin' class="text-center"></h1>
         </font>
         
@@ -57,44 +52,22 @@
     var wsport = 443;
     var randomId = parseInt(Math.random() * 100, 10)
     var client = new Paho.Client(wsbroker, wsport, "myclientid_" + randomId);
-    </script>
-    
-         <script>
+
     client.connect({onSuccess:onConnect , useSSL: true});
+    
     function onConnect() {
-      client.subscribe("SENAISPTCC/40/SIMV/PedAtt");
-      client.subscribe("SENAISPTCC/40/SIMV/MessageAdmin");
-      console.log("Conectado");
+    client.subscribe("SENAISPTCC/40/SIMV/MessageAdmin");
+      console.log("Connected!");
+      document.getElementById('MessageAdmin').innerText = 'Connected in MessageAdmin'
     }
+
   </script>
-    
-  <script>
-    client.onConnectionLost = onConnectionLost;
-    function onConnectionLost(responseObject) {
-      if (responseObject.errorCode !== 0) {
-        console.log("onConnectionLost:"+responseObject.errorMessage);
-      }
-    }
-  </script>
-    
-  <script>
-    function sendMessage(message) {
-      return function() {
-        mqtt_message = new Paho.Message(message);
-        mqtt_message.destinationName = "SENAISPTCC/40/SIMV/PedAtt";
-        client.send(mqtt_message);
-      }
-    }
-    document.getElementById('btn_01').addEventListener('click', sendMessage('pedatt'));
-  </script>
-    
+
   <script>
     client.onMessageArrived = onMessageArrived;
     function onMessageArrived(message) {
     console.log("onMessageArrived:"+message.payloadString);
     document.getElementById('MessageAdmin').innerText = message.payloadString 
-    console.log("on2MessageArrived:"+message2.payloadString);
-    document.getElementById('pedatt').innerText = message2.payloadString === 'pedatt' ? 'Pedido realizado' : '';
     }
   </script>
     
