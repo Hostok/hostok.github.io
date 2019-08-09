@@ -15,12 +15,11 @@
     <font face="verdana" color="green">
         
   <h1>Sistema Inteligente de Maquina de Vendas</h1>
-   
+        </font>
             <font size="0.5" face="verdana" color="red">    
       <h1>Mensagem do administrador</h1>
     </font>
         <font size="0.2" face="verdana" color="black">
-  <h1 id='MessageAdmin02' class="text-center"></h1>
   <h1 id='MessageAdmin' class="text-center"></h1>
         </font>
         
@@ -57,13 +56,10 @@
     client.connect({onSuccess:onConnect , useSSL: true});
     
     function onConnect() {
-    client.subscribe("SENAISPTCC/40/SIMV/MessageAdmin");
-      console.log("Connected!");
-      document.getElementById('MessageAdmin02').innerText = 'Conexão estabelecida com: Mensagem do Administrador'
-            
       client.subscribe("SENAISPTCC/40/SIMV/Vendas");
+      client.subscribe("SENAISPTCC/40/SIMV/MessageAdmin");  
       console.log("Connected!");
-      document.getElementById('MessageAdmin').innerText = 'Conexão estabelecida com: Vendas'
+      document.getElementById('MessageAdmin').innerText = 'Conexão estabelecida'
     }
 
   </script>
