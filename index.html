@@ -19,7 +19,7 @@
         
   <button id='btn_01'>Pedido de atualização</button>
   </font> 
-        <h1 id=ped_att></h1>
+        <h1 id=pedatt></h1>
         
             <font size="1" face="verdana" color="red">    
       <h1>Mensagem do administrador</h1>
@@ -88,11 +88,11 @@
     function sendMessage(message) {
       return function() {
         mqtt_message = new Paho.Message(message);
-        mqtt_message.destinationName = "SENAISPTCC/40/SIMV/Ped_Att";
+        mqtt_message.destinationName = "SENAISPTCC/40/SIMV/PedAtt";
         client.send(mqtt_message);
       }
     }
-    document.getElementById('btn_01').addEventListener('click', sendMessage('ped_att'));
+    document.getElementById('btn_01').addEventListener('click', sendMessage('pedatt'));
   </script>
     
   <script>
@@ -105,7 +105,7 @@
 client.ped_attMessageArrived = att_respMessageArrived;
     function onMessageArrived(message) {
       console.log("att_respMessageArrived:"+message.payloadString);
-      document.getElementById('ped_att').innerText = message.payloadString === 'ped_att' ? 'Pedido realizado' : '';
+      document.getElementById('pedatt').innerText = message.payloadString === 'pedatt' ? 'Pedido realizado' : '';
   </script>
     
 </body>
