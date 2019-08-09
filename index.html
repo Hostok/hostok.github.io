@@ -20,6 +20,7 @@
       <h1>Mensagem do administrador</h1>
     </font>
         <font size="0.2" face="verdana" color="black">
+  <h1 id='MessageAdmin02' class="text-center"></h1>
   <h1 id='MessageAdmin' class="text-center"></h1>
         </font>
         
@@ -58,7 +59,7 @@
     function onConnect() {
     client.subscribe("SENAISPTCC/40/SIMV/MessageAdmin");
       console.log("Connected!");
-      document.getElementById('MessageAdmin').innerText = 'Conexão estabelecida com: Mensagem do Administrador'
+      document.getElementById('MessageAdmin02').innerText = 'Conexão estabelecida com: Mensagem do Administrador'
             
       client.subscribe("SENAISPTCC/40/SIMV/Vendas");
       console.log("Connected!");
