@@ -65,16 +65,16 @@
   </script>
 
   <script>
-    MessageAdmin.onMessageArrived = onMessageArrived;
+    client.onMessageArrived = onMessageArrived;
       
     function onMessageArrived(MessageAdmin) {
     console.log("MessageAdminMessageArrived:"+MessageAdmin.payloadString);
     document.getElementById('MessageAdmin').innerText = MessageAdmin.payloadString 
     }
-    Vendas.onMessageArrived = onMessageArrived;
+    client._handleMessage = onMessageArrived;
       
-    function onMessageArrived(Vendas) {
-    console.log("VendasMessageArrived:"+Vendas.payloadString);
+    function _handleMessage(Vendas) {
+    console.log("Vendas_handleMessage:"+Vendas.payloadString);
     document.getElementById('Vendas').innerText = Vendas.payloadString 
     }
       
