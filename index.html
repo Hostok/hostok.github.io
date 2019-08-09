@@ -102,9 +102,9 @@
     document.getElementById('MessageAdmin').innerText = message.payloadString 
     }
       
-client.ped_attMessageArrived = att_respMessageArrived;
+client.MessageArrived = onMessageArrived;
     function onMessageArrived(message) {
-      console.log("att_respMessageArrived:"+message.payloadString);
+      console.log("onMessageArrived:"+message.payloadString);
       document.getElementById('pedatt').innerText = message.payloadString === 'pedatt' ? 'Pedido realizado' : '';
   </script>
     
