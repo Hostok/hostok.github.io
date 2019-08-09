@@ -17,22 +17,7 @@
   <button id='on'>TESTE 01</button>
   <button id='off'>TESTE 02</button>
         
-              <div class="container">
-    <h1 class="text-center">TESTES</h1>
-    <div class="row mt-5 text-center">
-      <div class="col-6">
-        <button class="btn btn-primary btn-lg" id='on'>Turn On</button>
-      </div>
-      <div class="col-6">
-        <button class="btn btn-danger btn-lg" id='off'>Turn Off</button>
-      </div>
-    </div>
-    <div class="row mt-5">
-      <div class="col-12">
-        <h1 id='message' class="text-center"></h1>
-      </div>
-    </div>
-  </div>
+  <h1 id='message' class="text-center"></h1>
         
     </center>
     
@@ -68,8 +53,8 @@
         client.send(mqtt_message);
       }
     }
-    document.getElementById('on').addEventListener('click', sendMessage('on'));
-    document.getElementById('off').addEventListener('click', sendMessage('off'));
+    document.getElementById('on').addEventListener('click', sendMessage('Teste 00'));
+    document.getElementById('off').addEventListener('click', sendMessage('Teste 01'));
   </script>
     
   <script>
