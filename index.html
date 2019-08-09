@@ -12,16 +12,18 @@
     <center>
     <font face="verdana" color="green">
         
-    <h1>Sistema Inteligente de Maquina de Vendas</h1>
+  <h1>Sistema Inteligente de Maquina de Vendas</h1>
     
         
   <button id='on'>TESTE 00</button>
   <button id='off'>TESTE 01</button>
   
   <h1>Console</h1>
-  <h1 id='message' class="text-center"></h1>
         
     </font>   
+        
+  <h1 id='message' class="text-center"></h1>
+        
     </center>
     
     <script>
@@ -63,8 +65,7 @@
   <script>
     client.onMessageArrived = onMessageArrived;
     function onMessageArrived(message) {
-    console.log("onMessageArrived:"+message.payloadString);
-    document.getElementById('message').innerText = message.payloadString === 'on' 
+    console.log("onMessageArrived:"+message.payloadString); 
     }
   </script>
     
