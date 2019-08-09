@@ -13,8 +13,53 @@
     <font face="verdana" color="green">
     <h1>Sistema Inteligente de Maquina de Vendas</h1>
     </font>
+        
   <button id='on'>TESTE 00</button>
   <button id='off'>TESTE 01</button>
+        
+    <div class="row mt-5">
+      <div class="col-12">
+        <h1 id='message' class="text-center"></h1>
+      </div>
+    </div>
+        
     </center>
+    
+  <script>
+    client.connect({onSuccess:onConnect , useSSL: true});
+    function onConnect() {
+      client.subscribe(""SENAISPTCC/40/SIMV/SENSORTESTE"");
+      console.log("Conectado");
+    }
+  </script>
+    
+  <script>
+    client.onConnectionLost = onConnectionLost;
+    function onConnectionLost(responseObject) {
+      if (responseObject.errorCode !== 0) {
+        console.log("onConnectionLost:"+responseObject.errorMessage);
+      }
+    }
+  </script>
+    
+  <script>
+    function sendMessage(message) {
+      return function() {
+        mqtt_message = new Paho.Message(message);
+        mqtt_message.destinationName = "lewagon-iot-lamp";
+        client.send(mqtt_message);
+      }
+    }
+    document.getElementById('on').addEventListener('click', sendMessage('on'));
+    document.getElementById('off').addEventListener('click', sendMessage('off'));
+  </script>
+    
+  <script>
+    client.onMessageArrived = onMessageArrived;
+    function onMessageArrived(message) {
+      console.log("onMessageArrived:"+message.payloadString);
+    }
+  </script>
+    
 </body>
 </html>
