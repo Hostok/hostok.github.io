@@ -19,7 +19,7 @@
             <font size="0.5" face="verdana" color="red">    
       <h1>Mensagem do administrador</h1>
     </font>
-        <font size="0.25" face="verdana" color="black">
+        <font size="0.2" face="verdana" color="black">
   <h1 id='MessageAdmin' class="text-center"></h1>
         </font>
         
@@ -34,15 +34,15 @@
   </tr>
   <tr>
     <td>Total de vendas</td>
-    <td id=vendas></td>
+    <td id=Vendas></td>
   </tr>
   <tr>
     <td>Pedidos - Opção 01</td>
-    <td id=pedidos01></td>
+    <td id=Pedidos01></td>
   </tr>
   <tr>
     <td>Temperatura interna</td>
-    <td id=temperatura></td>
+    <td id=Temperatura></td>
   </tr>
         
     </center>
@@ -59,6 +59,9 @@
     client.subscribe("SENAISPTCC/40/SIMV/MessageAdmin");
       console.log("Connected!");
       document.getElementById('MessageAdmin').innerText = 'Connected in MessageAdmin'
+            client.subscribe("SENAISPTCC/40/SIMV/Vendas");
+      console.log("Connected!");
+      document.getElementById('MessageAdmin').innerText = 'Connected in Vendas'
     }
 
   </script>
