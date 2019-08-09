@@ -17,10 +17,8 @@
   <button id='on'>TESTE 01</button>
   <button id='off'>TESTE 02</button>
         
-    </center>
-    
-      <div class="container">
-    <h1 class="text-center">Lamp remote control</h1>
+              <div class="container">
+    <h1 class="text-center">TESTES</h1>
     <div class="row mt-5 text-center">
       <div class="col-6">
         <button class="btn btn-primary btn-lg" id='on'>Turn On</button>
@@ -35,6 +33,8 @@
       </div>
     </div>
   </div>
+        
+    </center>
     
   <script>
     client.connect({onSuccess:onConnect , useSSL: true});
@@ -57,7 +57,7 @@
     function sendMessage(message) {
       return function() {
         mqtt_message = new Paho.Message(message);
-        mqtt_message.destinationName = "lewagon-iot-lamp";
+        mqtt_message.destinationName = "SENAISPTCC/40/SIMV/SENSORTESTE";
         client.send(mqtt_message);
       }
     }
