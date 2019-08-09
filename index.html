@@ -58,19 +58,22 @@
     function onConnect() {
     client.subscribe("SENAISPTCC/40/SIMV/MessageAdmin");
       console.log("Connected!");
-      document.getElementById('MessageAdmin').innerText = 'Connected in MessageAdmin'
-            client.subscribe("SENAISPTCC/40/SIMV/Vendas");
+      document.getElementById('MessageAdmin').innerText = 'Conexão estabelecida com: Mensagem do Administrador'
+            
+      client.subscribe("SENAISPTCC/40/SIMV/Vendas");
       console.log("Connected!");
-      document.getElementById('MessageAdmin').innerText = 'Connected in Vendas'
+      document.getElementById('MessageAdmin').innerText = 'Conexão estabelecida com: Vendas'
     }
 
   </script>
 
   <script>
     client.onMessageArrived = onMessageArrived;
-    function onMessageArrived(message) {
-    console.log("onMessageArrived:"+message.payloadString);
-    document.getElementById('MessageAdmin').innerText = message.payloadString 
+      
+    
+    function onMessageArrived(MessageAdmin) {
+    console.log("onMessageArrived:"+MessageAdmin.payloadString);
+    document.getElementById('MessageAdmin').innerText = MessageAdmin.payloadString 
     }
   </script>
     
