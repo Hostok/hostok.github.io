@@ -62,11 +62,6 @@
          <script>
     client.connect({onSuccess:onConnect , useSSL: true});
     function onConnect() {
-      client.subscribe("SENAISPTCC/40/SIMV/PedAtt");
-      console.log("Conectado");
-    }
-    client.connect({onSuccess:onConnect , useSSL: true});
-    function onConnect() {
       client.subscribe("SENAISPTCC/40/SIMV/MessageAdmin");
       console.log("Conectado");
     }
