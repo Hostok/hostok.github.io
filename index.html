@@ -70,8 +70,9 @@
     console.log("onMessageArrived:"+MessageAdmin.payloadString);
     document.getElementById('MessageAdmin').innerText = MessageAdmin.payloadString 
     }
-      
-     client.subscribe("SENAISPTCC/40/SIMV/Vendas");
+    
+    function onConnect() { 
+    client.subscribe("SENAISPTCC/40/SIMV/Vendas");
     console.log("Connected!"); 
     client.onMessageArrived = onMessageArrived;
       
