@@ -98,12 +98,6 @@
     console.log("onMessageArrived:"+message.payloadString);
     document.getElementById('MessageAdmin').innerText = message.payloadString 
     }
-      
-    client.onMessageArrived = onMessageArrived;
-    function onMessageArrived(message) {
-      console.log("onMessageArrived:"+message.payloadString);
-      document.getElementById('pedatt').innerText = message.payloadString === 'pedatt' ? 'Pedido realizado' : '';
-    }
   </script>
     
 </body>
