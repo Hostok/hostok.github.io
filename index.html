@@ -71,13 +71,13 @@
   <script>
     client.onAdminMessageArrived = MessageAdmin.onMessageArrived;
       
-    function MessageAdmin.onMessageArrived(MessageAdmin) {
+    function onMessageArrived(MessageAdmin) {
     console.log("MessageAdminMessageArrived:"+MessageAdmin.payloadString);
     document.getElementById('MessageAdmin').innerText = MessageAdmin.payloadString 
     }
     client.onMessageArrived = Vendas.onMessageArrived;  
       
-    function Vendas.onMessageArrived(Vendas) {
+    function onMessageArrived(Vendas) {
     console.log("VendasMessageArrived:"+Vendas.payloadString);
     document.getElementById('Vendas').innerText = Vendas.payloadString 
     }
