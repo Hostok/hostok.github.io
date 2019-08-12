@@ -4,7 +4,7 @@
 <head> 
     <meta charset="UTF-8"> <!-- Definindo horário -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Definindo escala de resolução (responsivo). -->
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"> <-- Ativando compatibilidade e HTTP (Padrão). -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> <!-- Ativando compatibilidade e HTTP (Padrão). -->
     <title>SIMV</title> <!-- Definindo título da página. -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/paho-mqtt.min.js"> <!-- Importando biblioteca (WebSocket) para página. -->
   </script>
@@ -17,7 +17,7 @@
     </font>
         
     <font face="verdana" color="blue">  <!-- Fonte. --> 
-  <h2>Relatório</h2>
+  <h2>Relatório</h2> <!-- Subtítulo -->
     </font>
         
 <table> <!-- Início da tabela -->
@@ -36,27 +36,27 @@
   <tr>
     <td>Temperatura interna</td>
     <td id=Temperatura></td>  <!-- Definindo "váriavel -->
-  </tr> <"-- Fim da tabela -->
+  </tr> <!-- Fim da tabela -->
         
     </center>
     
     <script> <!-- Conectando ao Broker -->
     var wsbroker = "iot.eclipse.org"; <!-- Endereço -->
     var wsport = 443; <!-- Porta -->
-    var randomId = parseInt(Math.random() * 100, 10)
-    var client = new Paho.Client(wsbroker, wsport, "myclientid_" + randomId);
-    client.connect({onSuccess:onConnect , useSSL: true});
+    var randomId = parseInt(Math.random() * 100, 10) <!-- Gerador de Id aleatório -->
+    var client = new Paho.Client(wsbroker, wsport, "myclientid_" + randomId); <!-- Definindo cliente -->
+    client.connect({onSuccess:onConnect , useSSL: true}); <!-- Verificar conexão e certificado -->
     
-    function onConnect() {
-      client.subscribe("SENAISPTCC/40/SIMV/Vendas");
-      console.log("Connected!");
+    function onConnect() { <!-- Ativa função de conectar ao broker -->
+      client.subscribe("SENAISPTCC/40/SIMV/Vendas"); <!-- Conecta no tópico -->
+      console.log("Connected!"); <!-- Confirma conexão no console -->
     }
         
-    client.onMessageArrived = onMessageArrived;   
+    client.onMessageArrived = onMessageArrived;  <!-- Protocolo do websocket --> 
          
-    function onMessageArrived(Vendas) {
-    console.log("Vendas"+Vendas.payloadString);
-    document.getElementById('Vendas').innerText = Vendas.payloadString 
+    function onMessageArrived(Vendas) { <!-- Ativa função de recebimento da mensagem -->
+    console.log("Vendas: "+Vendas.payloadString); <!-- Envia confirmação ao console -->
+    document.getElementById('Vendas').innerText = Vendas.payloadString <!-- Elemento de mensagem, enviando mensagem ao Id -->
     }
   </script>
     
