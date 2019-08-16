@@ -93,6 +93,7 @@ var gauge = c3.generate({
     }
 });
 
+
 /* App */
 $(document).ready(function () {
     $('#broker').val(json.broker);
