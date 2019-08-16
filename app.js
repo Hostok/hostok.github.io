@@ -13,6 +13,7 @@ var mqtt = new Paho.MQTT.Client(
 );
 
 /* define aos eventos seus respectivos callbacks*/
+mqtt.onConnectionLost = onConnectionLost;
 mqtt.onMessageArrived = onMessageArrived;
 
 function onConnectionLost(responseObject) {
