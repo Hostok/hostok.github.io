@@ -2,7 +2,7 @@
 var json = {
     broker: 'iot.eclipse.org',
     topic: 'SENAISPTCC/40/SIMV/Vendas',
-    port: 443
+    port: 1883
 };
 
 /* Instancia o paho-mqtt */
