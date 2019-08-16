@@ -5,16 +5,11 @@ var json = {
     port: 1883
 };
 
-/* resgata as informações do localStorage caso existir */
-if (JSON.parse(localStorage.getItem('mqtt'))) {
-    json = JSON.parse(localStorage.getItem('mqtt'));
-}
-
 /* Instancia o paho-mqtt */
 var mqtt = new Paho.MQTT.Client(
     json.broker,
     parseInt(json.port),
-    "DZ-" + Date.now()
+    "SENAISPTCC-" + Date.now()
 );
 
 /* define aos eventos seus respectivos callbacks*/
