@@ -6,7 +6,7 @@ var json = {
 };
 
 /* Instancia o paho-mqtt */
-var client = new Paho.MQTT.Client(
+var mqtt = new Paho.MQTT.Client(
     json.broker,
     parseInt(json.port),
     "SENAISPTCC-" + Date.now()
