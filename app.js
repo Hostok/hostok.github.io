@@ -23,20 +23,6 @@ function onMessageArrived(message) {
     var msg = message.payloadString;
     console.log(message.destinationName, ' -- ', msg);
 
-    if (msg > 50) {
-        return false;
-    }
-    if (msg == gauge.data.values('temperature')[0]) {
-        return false;
-    }
-
-    // metodo responsável por atualizar o Gauge
-    gauge.load({
-        columns: [
-            ['temperature', msg]
-        ]
-    });
-
 }
 
 /* define aos eventos de Conexão seus respectivos callbacks*/
