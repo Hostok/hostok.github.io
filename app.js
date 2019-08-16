@@ -52,7 +52,7 @@ var options = {
 };
 function onSuccess() {
     console.log("Conectado com o Broker MQTT");
-    mqtt.subscribe(json.topic, {qos: 1}); // Assina o Tópico
+    mqtt.subscribe(json.topic, {qos: 0}); // Assina o Tópico
     Materialize.toast('Conectado ao broker', 1000);
 }
 
