@@ -25,18 +25,6 @@ function onMessageArrived(message) {
 
 }
 
-/* define aos eventos de Conexão seus respectivos callbacks*/
-var options = {
-    timeout: 3,
-    onSuccess: onSuccess,
-    onFailure: onFailure
-};
-function onSuccess() {
-    console.log("Conectado com o Broker MQTT");
-    mqtt.subscribe(json.topic, {qos: 0}); // Assina o Tópico
-    Materialize.toast('Conectado ao broker', 1000);
-}
-
 function onFailure(message) {
     console.log("Connection failed: " + message.errorMessage);
 }
