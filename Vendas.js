@@ -19,9 +19,10 @@ mqtt.onMessageArrived = onMessageArrived;
 function onConnectionLost(responseObject) {
     return console.log("Status: " + responseObject.errorMessage);
 }
-function onMessageArrived(message) {
-    var msg = message.payloadString;
-    console.log(message.destinationName, ' -- ', msg);
+function onMessageArrived(Vendas) {
+    var msg = Vendas.payloadString;
+    console.log(Vendas.destinationName, ' -- ', msg);
+    document.getElementById('Vendas').innerText = Vendas.payloadString
 
 }
 
