@@ -12,6 +12,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js"></script>
   <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
   <script src="https://d3js.org/d3.v3.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
 
     
         <!-- Load CSS -->
@@ -22,13 +25,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js"
             type="text/javascript"></script>
 
-        .app {
-    <script src="/VendasApp.js" "text/javascript">
-        }
-        
-</head>
-    
+
+
+
+     
+
 <body>
+    
+    
+       <h1>Ler página <button type="button" id="ler-pagina">Ler página</button> </h1>
+   <div id="conteudo-pagina-lida"></div>
+     
+   <script>
+   $(document).ready(function(){
+        $("#ler-pagina").click(function(){
+              
+            $(function(){
+                $("#conteudo-pagina-lida").load("VendasApp.html"); 
+            });
+        })
+   });
+   </script>
+    
     <center> <!-- Centralização. -->
     <font face="verdana" color="green"> <!-- Fonte. -->
   <h1>Sistema Inteligente de Maquina de Vendas</h1> <!-- Título. -->
