@@ -4,9 +4,6 @@
   const portInput   = document.getElementById('port');
   const topicInput  = document.getElementById('topic');
 
-  const saveButton    = document.getElementById('save');
-  const connectButton = document.getElementById('connect');
-
   /* json com configuracoes iniciais de conexao */
   let json = {
     broker: 'iot.eclipse.org',
@@ -88,18 +85,6 @@
     broker = $('#broker').val();
     port   = $('#port').val();
     topic  = $('#topic').val();
-
-    /* salva no localStorage os dados do formulário */
-    localStorage.setItem("mqtt", JSON.stringify({ broker: broker, port: port, topic: topic }));
-
-    return location.reload();
-  };
-
-  const init = () => {
-    brokerInput.value = json.broker;
-    portInput.value   = json.port;
-    topicInput.value  = json.topic;
-  };
 
   /* App */
   init();
