@@ -6,9 +6,9 @@
 <title>VendasApp</title>
 <body>
 
-    <script>
+   <script> <!-- Conectando ao Broker -->
     var wsbroker = "iot.eclipse.org"; <!-- Endereço -->
-    var wsport = 1883; <!-- Porta -->
+    var wsport = 443; <!-- Porta -->
     var randomId = parseInt(Math.random() * 100, 10) <!-- Gerador de Id aleatório -->
     var client = new Paho.Client(wsbroker, wsport, "myclientid_" + randomId); <!-- Definindo cliente -->
     client.connect({onSuccess:onConnect , useSSL: true}); <!-- Verificar conexão e certificado -->
@@ -24,7 +24,7 @@
     console.log("Vendas: "+Vendas.payloadString); <!-- Envia confirmação ao console -->
     document.getElementById('Vendas').innerText = Vendas.payloadString <!-- Elemento de mensagem, enviando mensagem ao Id -->
     }
-    </script>
+  </script>
     
 </body>
 </html>
