@@ -87,6 +87,6 @@
     topic  = $('#topic').val();
 
   /* App */
-  init()
+  init();
 
-});
+};
