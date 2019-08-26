@@ -5,6 +5,11 @@ var json = {
     port: 1883
 };
 
+/* resgata as informações do localStorage caso existir */
+if (JSON.parse(localStorage.getItem('mqtt'))) {
+    json = JSON.parse(localStorage.getItem('mqtt'));
+}
+
 /* Instancia o paho-mqtt */
 var mqtt = new Paho.MQTT.Client(
     json.broker,
@@ -22,8 +27,17 @@ function onConnectionLost(responseObject) {
 function onMessageArrived(Vendas) {
     var msg = Vendas.payloadString;
     console.log(Vendas.destinationName, ' -- ', msg);
-    document.getElementById('Vendas').innerText = Vendas.payloadString
 
+/* define aos eventos de Conexão seus respectivos callbacks*/
+var options = {
+    timeout: 3,
+    onSuccess: onSuccess,
+    onFailure: onFailure
+};
+function onSuccess() {
+    console.log("Conectado com o Broker MQTT");
+    mqtt.subscribe(json.topic, {qos: 1}); // Assina o Tópico
+    Materialize.toast('Conectado ao broker', 1000);
 }
 
 function onFailure(message) {
@@ -42,19 +56,6 @@ $(document).ready(function () {
     $('#topic').val(json.topic);
 
     /* Eventos de configuração */
-    $('#save').on('click', function () {
-        var broker, topic;
-        broker = $('#broker').val();
-        port = $('#port').val();
-        topic = $('#topic').val();
-
-        /* salva no localStorage os dados do formulário */
-        localStorage.setItem("mqtt", JSON.stringify({broker: broker, port: port, topic: topic}));
-
-        location.reload();
-        return false;
-    });
-
     $('#connect').on('click', function () {
         init();
     });
