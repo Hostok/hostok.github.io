@@ -1,4 +1,4 @@
-function (VendasApp) {
+(function () {
 
   const broker = document.getElementById('broker');
   const port  = document.getElementById('port');
@@ -60,4 +60,4 @@ function (VendasApp) {
   /* App */
   init();
 
-};
+});
