@@ -8,7 +8,7 @@
   let json = {
     broker: 'iot.eclipse.org',
     topic: 'SENAISPTCC/40/SIMV/Vendas',
-    port: '1883'
+    port: 1883
   };
 
   const mqttConnect = () => {
