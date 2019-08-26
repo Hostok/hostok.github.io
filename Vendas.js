@@ -51,6 +51,19 @@ $(document).ready(function () {
     $('#topic').val(json.topic);
 
     /* Eventos de configuração */
+    $('#save').on('click', function () {
+        var broker, topic;
+        broker = $('#broker').val();
+        port = $('#port').val();
+        topic = $('#topic').val();
+
+        /* salva no localStorage os dados do formulário */
+        localStorage.setItem("mqtt", JSON.stringify({broker: broker, port: port, topic: topic}));
+
+        location.reload();
+        return false;
+    });
+
     $('#connect').on('click', function () {
         init();
     });
