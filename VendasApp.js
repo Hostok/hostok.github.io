@@ -67,12 +67,6 @@
     mqtt.connect(options); // Conecta ao Broker MQTT
   };
 
-  const save = () => {
-    var broker, topic;
-    broker = $('#broker').val();
-    port   = $('#port').val();
-    topic  = $('#topic').val();
-
   /* App */
   init();
 
