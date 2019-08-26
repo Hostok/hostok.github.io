@@ -1,8 +1,8 @@
 (function () {
 
-  const brokerInput = document.getElementById('broker');
-  const portInput   = document.getElementById('port');
-  const topicInput  = document.getElementById('topic');
+  const broker = document.getElementById('broker');
+  const port  = document.getElementById('port');
+  const topic  = document.getElementById('topic');
 
   /* json com configuracoes iniciais de conexao */
   let json = {
