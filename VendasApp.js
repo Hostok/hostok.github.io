@@ -93,4 +93,4 @@
   saveButton.addEventListener('click', save);
   connectButton.addEventListener('click', connect);
 
-})();
+});
