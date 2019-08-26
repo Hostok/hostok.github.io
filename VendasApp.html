@@ -7,8 +7,8 @@
 <body>
 
    <script> 
-    var wsbroker = "broker.iot-br.com"; <!-- Endereço -->
-    var wsport = 8080; <!-- Porta -->
+    var wsbroker = "iot.eclipse.org"; <!-- Endereço -->
+    var wsport = 80; <!-- Porta -->
     var randomId = parseInt(Math.random() * 100, 10) <!-- Gerador de Id aleatório -->
     var client = new Paho.Client(wsbroker, wsport, "myclientid_" + randomId); <!-- Definindo cliente -->
     client.connect({onSuccess:onConnect , useSSL: true}); <!-- Verificar conexão e certificado -->
