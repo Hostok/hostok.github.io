@@ -1,4 +1,4 @@
-function () {
+function (VendasApp) {
 
   const broker = document.getElementById('broker');
   const port  = document.getElementById('port');
