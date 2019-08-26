@@ -26,7 +26,7 @@
 
   };
 
-  const onMessageArrived = (Vendas) => {
+  const onMessageArrived = (message) => {
     let msg = Vendas.payloadString;
     console.log(Vendas.destinationName, ' -- ', msg);
     
