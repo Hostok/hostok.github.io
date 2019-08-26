@@ -29,24 +29,14 @@
   const onMessageArrived = (Vendas) => {
     let msg = Vendas.payloadString;
     console.log(Vendas.destinationName, ' -- ', msg);
-
-    if ( msg > 50 ) {
-      return false;
-    }
-
-    if ( msg == gauge.data.values('temperature')[0] ) {
-      return false;
-    }
-
-   
+    
   /* Instancia o paho-mqtt */
   let mqtt              = mqttConnect();
   mqtt.onConnectionLost = onConnectionLost;
   mqtt.onMessageArrived = onMessageArrived;
 
-
   const onSuccess = () => {
-    mqtt.subscribe(json.topic, { qos: 1 }); // Assina o Tópico
+    mqtt.subscribe(json.topic, { qos: 0 }); // Assina o Tópico
     Materialize.toast('Conectado ao broker', 2000);
   };
 
