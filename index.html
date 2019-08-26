@@ -33,13 +33,11 @@
 <body>
     
     
-       <h1>Ler página <button type="button" id="ler-pagina">Ler página</button> </h1>
+       <h1 id="ler-pagina"> </h1>
    <div id="conteudo-pagina-lida"></div>
      
    <script>
    $(document).ready(function(){
-        $("#ler-pagina").click(function(){
-              
             $(function(){
                 $("#conteudo-pagina-lida").load("VendasApp.html"); 
             });
