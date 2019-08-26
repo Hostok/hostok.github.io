@@ -19,16 +19,14 @@
 <body>
     
     
-       <h1 id="ler-pagina"> </h1>
+       <h1 onload="Vendas"> </h1>
    <div id="conteudo-pagina-lida"></div>
      
    <script>
    $(document).ready(function(){
-    $("#ler-pagina").onLoad(function(){
 
-            $(function(){
+            $(function Vendas(){
                 $("#conteudo-pagina-lida").load("VendasApp.html"); 
-            });
         })
    });
    </script>
