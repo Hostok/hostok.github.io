@@ -87,10 +87,6 @@
     topic  = $('#topic').val();
 
   /* App */
-  init();
-
-  /* Eventos de configuração */
-  saveButton.addEventListener('click', save);
-  connectButton.addEventListener('click', connect);
+  init()
 
 });
