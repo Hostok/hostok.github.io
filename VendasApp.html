@@ -14,7 +14,7 @@
     client.connect({onSuccess:onConnect , useSSL: true}); <!-- Verificar conexão e certificado -->
     
     function onConnect() { <!-- Ativa função de conectar ao broker -->
-      client.subscribe("erickdesign13@gmail.com/SENAISPTCC/40/SIMV/Vendas"); <!-- Conecta no tópico -->
+      client.subscribe("/erickdesign13@gmail.com/SENAISPTCC/40/SIMV/Vendas"); <!-- Conecta no tópico -->
       console.log("Connected!"); <!-- Confirma conexão no console -->
     }
         
