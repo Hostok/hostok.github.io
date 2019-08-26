@@ -6,7 +6,7 @@
 <title>VendasApp</title>
 <body>
 
- <script> <!-- Conectando ao Broker -->
+<!-- Conectando ao Broker -->
     var wsbroker = "iot.eclipse.org"; <!-- Endereço -->
     var wsport = 1883; <!-- Porta -->
     var randomId = parseInt(Math.random() * 100, 10) <!-- Gerador de Id aleatório -->
@@ -24,7 +24,6 @@
     console.log("Vendas: "+Vendas.payloadString); <!-- Envia confirmação ao console -->
     document.getElementById('Vendas').innerText = Vendas.payloadString <!-- Elemento de mensagem, enviando mensagem ao Id -->
     }
-  </script>
 
 </body>
 </html>
