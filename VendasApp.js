@@ -11,11 +11,6 @@
     port: 1883
   };
 
-  /* resgata as informações do localStorage caso existir */
-  if ( JSON.parse(localStorage.getItem('mqtt')) ) {
-    json = JSON.parse(localStorage.getItem('mqtt'));
-  }
-
   const mqttConnect = () => {
     return new Paho.MQTT.Client(
       json.broker,
@@ -43,15 +38,7 @@
       return false;
     }
 
-    // metodo responsável por atualizar o Gauge
-    gauge.load({
-      columns: [
-        ['temperature', msg]
-      ]
-    });
-
-  };
-
+   
   /* Instancia o paho-mqtt */
   let mqtt              = mqttConnect();
   mqtt.onConnectionLost = onConnectionLost;
