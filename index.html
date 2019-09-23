@@ -37,7 +37,7 @@
   </tr> <!-- Fim da tabela -->
     </center>
 
-
+<script>
    // Create a client instance
 client = new Paho.MQTT.Client(location.hostname, Number(location.port), "clientId");
    	var ClientImpl = function (uri, host, port, path, clientId) {
@@ -84,6 +84,6 @@ function onConnectionLost(responseObject) {
 function onMessageArrived(message) {
   console.log("onMessageArrived:"+message.payloadString);
 }
-		
+	    </script>		
 </body>
 </html>
