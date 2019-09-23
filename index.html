@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Definindo escala de resolução (responsivo). -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge"> <!-- Ativando compatibilidade e HTTP (Padrão). -->
     <title>SIMV</title> <!-- Definindo título da página. -->
-  <script src="<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>"> <!-- Importando biblioteca (WebSocket) para página. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"> <!-- Importando biblioteca (WebSocket) para página. -->
   </script>
 </head>
 
@@ -37,18 +37,24 @@
   </tr> <!-- Fim da tabela -->
     </center>
 
-<script src="./browserMqtt.js"></script>
-<script>
-  var client = mqtt.connect() // you add a ws:// url here
-  client.subscribe("mqtt/demo")
 
-  client.on("message", function (topic, payload) {
-    alert([topic, payload].join(": "))
-    client.end()
-  })
 
-  client.publish("mqtt/demo", "hello world!")
+
+    <script> <!-- Conectando ao Broker -->
+    var wsbroker = "mqtt.dioty.co"; <!-- Endereço -->
+    var wsport = 8080; <!-- Porta -->
+    var randomId = parseInt(Math.random() * 100, 10) <!-- Gerador de Id aleatório -->
+    var client = new Paho.Client(wsbroker, wsport, "myclientid_" + randomId); <!-- Definindo cliente -->
+    client.connect({onSuccess:onConnect , useSSL: false}); <!-- Verificar conexão e certificado -->
+    function onConnect() { <!-- Ativa função de conectar ao broker -->
+      client.subscribe("SENAISPTCC/40/SIMV/Vendas"); <!-- Conecta no tópico -->
+      console.log("Connected!"); <!-- Confirma conexão no console -->
+    }
+    client.onMessageArrived = onMessageArrived;  <!-- Protocolo do websocket --> 
+function onMessageArrived(Vendas) { <!-- Ativa função de recebimento da mensagem -->
+console.log("Vendas: "+Vendas.payloadString); <!-- Envia confirmação ao console -->
+document.getElementById('Vendas').innerText = Vendas.payloadString <!-- Elemento de mensagem, enviando mensagem ao Id -->
+    }
 </script>
-  </script>
 </body>
 </html>
