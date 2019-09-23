@@ -44,7 +44,8 @@
     var wsbroker = "mqtt.dioty.co"; <!-- Endereço -->
     var wsport = 8080; <!-- Porta -->
     var randomId = parseInt(Math.random() * 100, 10) <!-- Gerador de Id aleatório -->
-    client.connect({onSuccess:onConnect , useSSL: false}); <!-- Verificar conexão e certificado -->
+    var client = new Paho.Client(wsbroker, wsport, "myclientid_" + randomId); <!-- Definindo cliente -->
+    client.connect({onSuccess:onConnect , useSSL: true}); <!-- Verificar conexão e certificado -->
     function onConnect() { <!-- Ativa função de conectar ao broker -->
       client.subscribe("SENAISPTCC/40/SIMV/Vendas"); <!-- Conecta no tópico -->
       console.log("Connected!"); <!-- Confirma conexão no console -->
