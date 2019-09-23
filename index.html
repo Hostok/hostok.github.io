@@ -1,45 +1,23 @@
-    
 <!DOCTYPE html>
 <html lang="pt-br"> <!-- Linha 1 e 2: definindo tipo de documento e idioma. -->
-    
 <head> 
+
     <meta charset="UTF-8"> <!-- Definindo horário -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Definindo escala de resolução (responsivo). -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge"> <!-- Ativando compatibilidade e HTTP (Padrão). -->
     <title>SIMV</title> <!-- Definindo título da página. -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/paho-mqtt.min.js"> <!-- Importando biblioteca (WebSocket) para página. -->
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-  <script src="https://d3js.org/d3.v3.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js"
-            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-            crossorigin="anonymous"></script>
+</head>
 
 <body>
-    
-    
-       <h1 onload="Vendas"> </h1>
-   <div id="conteudo-pagina-lida"></div>
-     
-   <script>
-   $(document).ready(function(){
-
-            $(function Vendas(){
-                $("#conteudo-pagina-lida").load("VendasApp.html"); 
-        })
-   });
-   </script>
-    
     <center> <!-- Centralização. -->
     <font face="verdana" color="green"> <!-- Fonte. -->
   <h1>Sistema Inteligente de Maquina de Vendas</h1> <!-- Título. -->
     </font>
-        
     <font face="verdana" color="blue">  <!-- Fonte. --> 
   <h2>Relatório</h2> <!-- Subtítulo -->
     </font>
-        
 <table> <!-- Início da tabela -->
   <tr>
     <th>Telemetria</th>
@@ -47,6 +25,7 @@
   </tr>
   <tr>
     <td>Total de vendas</td>
+    <td id=Vendas></td>  <!-- Definindo váriavel. -->
   </tr>
   <tr>
     <td>Pedidos - Opção 01</td>
@@ -56,9 +35,22 @@
     <td>Temperatura interna</td>
     <td id=Temperatura></td>  <!-- Definindo "váriavel -->
   </tr> <!-- Fim da tabela -->
-        
     </center>
-    
-</script>
+    <script> <!-- Conectando ao Broker -->
+    var wsbroker = "mqtt.dioty.co"; <!-- Endereço -->
+    var wsport = 8080 ; <!-- Porta -->
+    var randomId = parseInt(Math.random() * 100, 10) <!-- Gerador de Id aleatório -->
+    var client = new Paho.Client(wsbroker, wsport, "myclientid_" + randomId); <!-- Definindo cliente -->
+    client.connect({onSuccess:onConnect , useSSL: true}); <!-- Verificar conexão e certificado -->
+    function onConnect() { <!-- Ativa função de conectar ao broker -->
+      client.subscribe("/erickdesign13@gmail.com/SENAISPTCC/40/SIMV/Vendas"); <!-- Conecta no tópico -->
+      console.log("Connected!"); <!-- Confirma conexão no console -->
+    }
+    client.onMessageArrived = onMessageArrived;  <!-- Protocolo do websocket --> 
+    function onMessageArrived(Vendas) { <!-- Ativa função de recebimento da mensagem -->
+    console.log("Vendas: "+Vendas.payloadString); <!-- Envia confirmação ao console -->
+    document.getElementById('Vendas').innerText = Vendas.payloadString <!-- Elemento de mensagem, enviando mensagem ao Id -->
+    }
+  </script>
 </body>
 </html>
