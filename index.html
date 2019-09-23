@@ -40,20 +40,6 @@
 <script>
    // Create a client instance
 client = new Paho.MQTT.Client(location.hostname, Number(location.port), "clientId");
-   	var ClientImpl = function (uri, host, port, path, clientId) {
-		// Check dependencies are satisfied in this browser.
-		if (!("WebSocket" in global && global.WebSocket !== null)) {
-			throw new Error(format(ERROR.UNSUPPORTED, ["WebSocket"]));
-		}
-		if (!("localStorage" in global && global.localStorage !== null)) {
-			throw new Error(format(ERROR.UNSUPPORTED, ["localStorage"]));
-		}
-		if (!("ArrayBuffer" in global && global.ArrayBuffer !== null)) {
-			throw new Error(format(ERROR.UNSUPPORTED, ["ArrayBuffer"]));
-		}
-		this._trace("Paho.MQTT.Client", host, port);
-		this.host = mqtt.dioty.co;
-		this.port = 8080;
 
 // set callback handlers
 client.onConnectionLost = onConnectionLost;
@@ -84,6 +70,24 @@ function onConnectionLost(responseObject) {
 function onMessageArrived(message) {
   console.log("onMessageArrived:"+message.payloadString);
 }
+		var ClientImpl = function (uri, host, port, path, clientId) {
+		// Check dependencies are satisfied in this browser.
+		if (!("WebSocket" in global && global.WebSocket !== null)) {
+			throw new Error(format(ERROR.UNSUPPORTED, ["WebSocket"]));
+		}
+		if (!("localStorage" in global && global.localStorage !== null)) {
+			throw new Error(format(ERROR.UNSUPPORTED, ["localStorage"]));
+		}
+		if (!("ArrayBuffer" in global && global.ArrayBuffer !== null)) {
+			throw new Error(format(ERROR.UNSUPPORTED, ["ArrayBuffer"]));
+		}
+		this._trace("Paho.MQTT.Client", uri, host, port, path, clientId);
+		this.host = host;
+		this.port = port;
+		this.path = path;
+		this.uri = uri;
+		this.clientId = clientId;
+		this._wsuri = null;
 	    </script>		
 </body>
 </html>
