@@ -41,20 +41,38 @@
 
 
     <script> <!-- Conectando ao Broker -->
-    var wsbroker = "mqtt.dioty.co"; <!-- Endereço -->
-    var wsport = 8080; <!-- Porta -->
-    var randomId = parseInt(Math.random() * 100, 10) <!-- Gerador de Id aleatório -->
-    var client = new Paho.Client(wsbroker, wsport, "myclientid_" + randomId); <!-- Definindo cliente -->
-    client.connect({onSuccess:onConnect , useSSL: true}); <!-- Verificar conexão e certificado -->
-    function onConnect() { <!-- Ativa função de conectar ao broker -->
-      client.subscribe("SENAISPTCC/40/SIMV/Vendas"); <!-- Conecta no tópico -->
-      console.log("Connected!"); <!-- Confirma conexão no console -->
-    }
-    client.onMessageArrived = onMessageArrived;  <!-- Protocolo do websocket --> 
-function onMessageArrived(Vendas) { <!-- Ativa função de recebimento da mensagem -->
-console.log("Vendas: "+Vendas.payloadString); <!-- Envia confirmação ao console -->
-document.getElementById('Vendas').innerText = Vendas.payloadString <!-- Elemento de mensagem, enviando mensagem ao Id -->
-    }
+   // Create a client instance
+client = new Paho.MQTT.Client(mqtt.dioty.co, Number(8080), "clientId");
+
+// set callback handlers
+client.onConnectionLost = onConnectionLost;
+client.onMessageArrived = onMessageArrived;
+
+// connect the client
+client.connect({onSuccess:onConnect});
+
+
+// called when the client connects
+function onConnect() {
+  // Once a connection has been made, make a subscription and send a message.
+  console.log("onConnect");
+  client.subscribe("/erickdesign13@gmail.com/SENAISPTCC/40/SIMV/Vendas");
+  message = new Paho.MQTT.Message("Hello");
+  message.destinationName = "/erickdesign13@gmail.com/SENAISPTCC/40/SIMV/Vendas";
+  client.send(message);
+}
+
+// called when the client loses its connection
+function onConnectionLost(responseObject) {
+  if (responseObject.errorCode !== 0) {
+    console.log("onConnectionLost:"+responseObject.errorMessage);
+  }
+}
+
+// called when a message arrives
+function onMessageArrived(message) {
+  console.log("onMessageArrived:"+message.payloadString);
+}
 </script>
 </body>
 </html>
