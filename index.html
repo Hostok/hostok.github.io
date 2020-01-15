@@ -1,76 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-br"> <!-- Linha 1 e 2: definindo tipo de documento e idioma. -->
-<head> 
-
-    <meta charset="UTF-8"> <!-- Definindo horário -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Definindo escala de resolução (responsivo). -->
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"> <!-- Ativando compatibilidade e HTTP (Padrão). -->
-    <title>SIMV</title> <!-- Definindo título da página. -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"> <!-- Importando biblioteca (WebSocket) para página. -->
-  </script>
-</head>
-
-<body>
-    <center> <!-- Centralização. -->
-    <font face="verdana" color="green"> <!-- Fonte. -->
-  <h1>Sistema Inteligente de Maquina de Vendas</h1> <!-- Título. -->
-    </font>
-    <font face="verdana" color="blue">  <!-- Fonte. --> 
-  <h2>Relatório</h2> <!-- Subtítulo -->
-    </font>
-<table> <!-- Início da tabela -->
-  <tr>
-    <th>Telemetria</th>
-    <th>Valores</th>
-  </tr>
-  <tr>
-    <td>Total de vendas</td>
-    <td id=Vendas></td>  <!-- Definindo váriavel. -->
-  </tr>
-  <tr>
-    <td>Pedidos - Opção 01</td>
-    <td id=Pedidos01></td>  <!-- Definindo váriavel. -->
-  </tr>
-  <tr>
-    <td>Temperatura interna</td>
-    <td id=Temperatura></td>  <!-- Definindo "váriavel -->
-  </tr> <!-- Fim da tabela -->
-    </center>
-
-<script>
-   // Create a client instance
-client = new Paho.MQTT.Client(location.hostname, Number(location.port), "clientId");
-location.hostname = mqtt.dioty.co;
-	location.port = 8080;
-// set callback handlers
-client.onConnectionLost = onConnectionLost;
-client.onMessageArrived = onMessageArrived;
-
-// connect the client
-client.connect({onSuccess:onConnect});
-
-
-// called when the client connects
-function onConnect() {
-  // Once a connection has been made, make a subscription and send a message.
-  console.log("onConnect");
-  client.subscribe("/erickdesign13@gmail.com/SENAISPTCC/40/SIMV/Vendas");
-  message = new Paho.MQTT.Message("Hello");
-  message.destinationName = "/erickdesign13@gmail.com/SENAISPTCC/40/SIMV/Vendas";
-  client.send(message);
-}
-
-// called when the client loses its connection
-function onConnectionLost(responseObject) {
-  if (responseObject.errorCode !== 0) {
-    console.log("onConnectionLost:"+responseObject.errorMessage);
-  }
-}
-
-// called when a message arrives
-function onMessageArrived(message) {
-  console.log("onMessageArrived:"+message.payloadString);
-}
-	    </script>		
-</body>
+<html lang="pt-br">
+	<head> 
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>HostokApp</title>
+	</head>
+	<body>
+		<h1>Hello World<h1>
+	</body>
 </html>
